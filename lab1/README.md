@@ -16,14 +16,14 @@
 
 1. Клонировать репозиторий:
    ```bash
-   git clone <https://github.com/ShadowFuri123/web-prog>
-   cd lab1/nginx-lab
+   git clone https://github.com/ShadowFuri123/web-prog/tree/main
+   cd web-prog/lab1/nginx-lab
 Запустить контейнеры:
 ```bash
 docker-compose up -d --build
 ```
 Открыть в браузере:
-```http://localhost:8080```
+```http://localhost:3000```
 📂 Содержимое проекта
 
 ```docker-compose.yml``` — описание сервиса Nginx
