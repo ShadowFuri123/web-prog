@@ -17,7 +17,7 @@
 
 1. Клонировать репозиторий:
    ```bash
-   git clone https://github.com/ShadowFuri123/web-prog/tree/main
+   git clone https://github.com/ShadowFuri123/web-prog.git
    cd web-prog/lab1/nginx-lab
 Запустить контейнеры:
 ```bash
