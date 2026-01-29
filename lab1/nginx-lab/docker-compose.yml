@@ -4,5 +4,15 @@ services:
     image: nginx:1.27-alpine
     ports:
       - "3000:80"
+    depends_on:
+      - php
     volumes:
       - ./code:/usr/share/nginx/html
+  php:
+    image: php:8.2-fpm
+    container_name: lab2_php
+    volumes:
+      - ./www:/var/www/html
+    expose:
+      - "9000"
+
