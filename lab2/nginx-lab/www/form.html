@@ -3,24 +3,33 @@
 <head>
     <title>Volunteer Site</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form id="myForm">
-      <input type="text" name="Имя" placeholder="Введите имя" required>
-      <input type="date" name="Дата рождения" placeholder="Выберите дату рождения" required>
-      <select name="Направление" required>
-        <option value="Экология">Экология</option>
-        <option value="Образование">Образование</option>
-        <option value="Культура">Культура</option>
-        <option value="Спорт">Спорт</option>
-      </select>
-      <input type="checkbox" name="Опыт"> Опыт есть<br>
-      <input type="radio" name="Вид помощи" value="Участие в субботнике"> Участие в субботнике
-      <input type="radio" name="Вид помощи" value="Помощь в организации"> Помощь в организации<br>
-      <input type="radio" name="Вид помощи" value="Помощь пенсионерам"> Помощь пенсионерам<br>
+        <div class="main_block">
+            <input type="text" class="username"  name="username" placeholder="Введите имя" required>
+            <div class="date_and_dir">
+                <input type="date" class="date_birth" name="Date_birth" placeholder="Выберите дату рождения" required>
+                <select class="direction" name="Direction" required>
+                    <option value="Ecology">Экология</option>
+                    <option value="Education">Образование</option>
+                    <option value="Culture">Культура</option>
+                    <option value="Sport">Спорт</option>
+                </select>
+            </div>
+        </div>
+
+      <input type="checkbox" class="experience" name="Опыт"> Опыт есть<br>
+      <input type="radio" class="type_help" name="Вид помощи" value="clean_up_day"> Участие в субботнике
+      <input type="radio" class="type_help" name="Вид помощи" value="organization"> Помощь в организации<br>
+      <input type="radio" class="type_help" name="Вид помощи" value="pensioners"> Помощь пенсионерам<br>
       <button type="submit">Отправить</button>
     </form>
+
     <h2 id="result"></h2>
+
+
     <script>
       document.getElementById("myForm").addEventListener("submit", function(e) {
         e.preventDefault();
