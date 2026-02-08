@@ -19,12 +19,19 @@
                 </select>
             </div>
         </div>
-
-      <input type="checkbox" class="experience" name="Опыт"> Опыт есть<br>
-      <input type="radio" class="type_help" name="Вид помощи" value="clean_up_day"> Участие в субботнике
-      <input type="radio" class="type_help" name="Вид помощи" value="organization"> Помощь в организации<br>
-      <input type="radio" class="type_help" name="Вид помощи" value="pensioners"> Помощь пенсионерам<br>
-      <button type="submit">Отправить</button>
+        <div class="exp">
+            <h2>Есть ли у вас опыт?</h2><br>
+            <label class="experience-item">
+                <input type="checkbox" name="Опыт"> Опыт есть
+            </label>
+        </div>
+        <div class="type_help">
+            <h2>Выберите вид помощи</h2><br>
+            <input type="radio" class="type_helpbt" name="Вид помощи" value="clean_up_day"> Участие в субботнике
+            <input type="radio" class="type_helpbt" name="Вид помощи" value="organization"> Помощь в организации<br>
+            <input type="radio" class="type_helpbt" name="Вид помощи" value="pensioners"> Помощь пенсионерам<br>
+        </div>
+        <button type="submit">Отправить</button>
     </form>
 
     <h2 id="result"></h2>
