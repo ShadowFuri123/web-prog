@@ -12,10 +12,10 @@
             <div class="date_and_dir">
                 <input type="date" class="date_birth" name="Date_birth" placeholder="Выберите дату рождения" required>
                 <select class="direction" name="Direction" required>
-                    <option value="Ecology">Экология</option>
-                    <option value="Education">Образование</option>
-                    <option value="Culture">Культура</option>
-                    <option value="Sport">Спорт</option>
+                    <option value="Экология">Экология</option>
+                    <option value="Образование">Образование</option>
+                    <option value="Культура">Культура</option>
+                    <option value="Спорт">Спорт</option>
                 </select>
             </div>
         </div>
@@ -28,33 +28,31 @@
         <div class="type_help">
             <h1>Выберите вид помощи</h1>
             <label class="type_help-option">
-                <input type="radio" name="Вид помощи" value="clean_up_day"> Участие в субботнике
+                <input type="radio" name="type_help" value="Участие в субботнике"> Участие в субботнике
             </label>
             <label class="type_help-option">
-                <input type="radio" name="Вид помощи" value="organization"> Помощь в организации
+                <input type="radio" name="type_help" value="Помощь в организации мероприятия"> Помощь в организации мероприятия
             </label>
             <label class="type_help-option">
-                <input type="radio" name="Вид помощи" value="pensioners"> Помощь пенсионерам
+                <input type="radio" name="type_help" value="Помощь пенсионерам"> Помощь пенсионерам
             </label>
         </div>
         <button type="submit" class="butt_submit">Отправить</button>
     </form>
 
-    <h2 id="result"></h2>
-
-
     <script>
-      document.getElementById("myForm").addEventListener("submit", function(e) {
-        e.preventDefault();
+        document.getElementById("myForm").addEventListener("submit", function(e) {
+            e.preventDefault();
 
-        const formData = new FormData(this);
-        let output = "";
-        for (const [name, value] of formData.entries()) {
-          output += `<p><b>${name}:</b> ${value}</p>`;
-        }
+            const username = this.username.value;
+            const date_birth = this.Date_birth.value;
+            const direction = this.Direction.value;
+            const type_help = document.querySelector('input[name="type_help"]:checked')?.value || 'не выбрано';
 
-        document.getElementById("result").innerHTML = output;
-      });
+            alert("Здравствуйте, " + username + ", " + date_birth + " г.р.! \n" +
+                  "Вы выбрали направление: " + direction + "\n" +
+                  "Вид помощи: " + type_help);
+        });
     </script>
 
 </body>
