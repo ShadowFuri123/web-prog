@@ -4,7 +4,7 @@
     <p>Данные из сессии:</p>
     <ul>
         <li>Имя: <?= $_SESSION['username'] ?></li>
-        <li>Email: <?= $_SESSION['direction'] ?></li>
+        <li>Направление: <?= $_SESSION['direction'] ?></li>
     </ul>
 <?php else: ?>
     <p>Данных пока нет.</p>

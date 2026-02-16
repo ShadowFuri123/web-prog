@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="myForm" action="process.php" method="POST">
+    <form id="myForm" action="proces.php" method="POST">
         <div class="main_block">
             <input type="text" class="username"  name="username" placeholder="Введите имя" required>
             <div class="date_and_dir">
@@ -42,7 +42,6 @@
 
     <script>
         document.getElementById("myForm").addEventListener("submit", function(e) {
-            e.preventDefault();
 
             const username = this.username.value;
             const date_birth = this.Date_birth.value;
