@@ -10,8 +10,8 @@
         <div class="main_block">
             <input type="text" class="username"  name="username" placeholder="Введите имя" required>
             <div class="date_and_dir">
-                <input type="date" class="date_birth" name="Date_birth" placeholder="Выберите дату рождения:" required>
-                <select class="direction" name="Direction" required>
+                <input type="date" class="date_birth" name="date_birth" placeholder="Выберите дату рождения:" required>
+                <select class="direction" name="direction" required>
                     <option value="Экология">Экология</option>
                     <option value="Образование">Образование</option>
                     <option value="Культура">Культура</option>
@@ -22,7 +22,7 @@
         <div class="exp">
             <h1>Есть ли у вас опыт?</h1><br>
             <label class="experience-item">
-                <input type="checkbox" name="Опыт"> Опыт есть
+                <input type="checkbox" name="experience" value="Есть"> Опыт есть
             </label>
         </div>
         <div class="type_help">
@@ -44,8 +44,8 @@
         document.getElementById("myForm").addEventListener("submit", function(e) {
 
             const username = this.username.value;
-            const date_birth = this.Date_birth.value;
-            const direction = this.Direction.value;
+            const date_birth = this.date_birth.value;
+            const direction = this.direction.value;
             const type_help = document.querySelector('input[name="type_help"]:checked')?.value || 'не выбрано';
 
             alert("Здравствуйте, " + username + ", " + date_birth + " г.р.! \n" +

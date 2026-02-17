@@ -9,10 +9,11 @@
     <ul>
         <?php
         if(file_exists("data.txt")){
-            $lines = file("data.txt", FILE_IGNORE_NEW_LINES);
+            $lines = file("data.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
             foreach($lines as $line){
-                list($name, $email) = explode(";", $line);
-                echo "<li>$name ($email)</li>";
+                $parts = explode(",", $line);
+
+                echo "<li>$name (Дата: $date, Напр: $dir, Помощь: $help, Опыт: $exp)</li>";
             }
         } else {
             echo "<li>Данных нет</li>";
