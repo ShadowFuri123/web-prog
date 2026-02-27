@@ -1,0 +1,6 @@
+{
+    "name": "sugai/nginx-lab",
+    "require": {
+        "guzzlehttp/guzzle": "^7.10"
+    }
+}
