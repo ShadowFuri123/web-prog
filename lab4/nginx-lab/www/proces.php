@@ -39,13 +39,12 @@ file_put_contents("data.txt", $line, FILE_APPEND);
 require_once 'ApiClient.php';
 $api = new ApiClient();
 
-$url = 'https://www.volunteerconnector.org/api/search';
+$url = 'https://data.gov.ru/opendata/7705846236-blagoorg/data-20200214T0000.json';
 $apiData = $api->request($url);
 
 $_SESSION['api_data'] = $apiData;
 
-
-
+setcookie("last_submission", date('Y-m-d H:i:s'), time() + 3600, "/");
 header("Location: index.php");
 exit();
 ?>

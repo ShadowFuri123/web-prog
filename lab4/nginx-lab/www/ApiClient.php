@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 use GuzzleHttp\Client;
 
 class ApiClient {
@@ -18,3 +18,4 @@ class ApiClient {
             return ['error' => $e->getMessage()];
         }
     }
+}
