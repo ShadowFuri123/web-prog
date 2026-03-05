@@ -35,6 +35,11 @@
         <p>Данных пока нет.</p>
     <?php endif; ?>
 
+    if (isset($_SESSION['api_data'])) {
+    echo "<h3>Данные из API:</h3>";
+    echo "<pre>" . print_r($_SESSION['api_data'], true) . "</pre>";
+}
+
     <hr>
     <a href="form.html">Заполнить форму</a> |
     <a href="view.php">Посмотреть все данные</a>

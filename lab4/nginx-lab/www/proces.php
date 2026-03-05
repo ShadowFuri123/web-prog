@@ -36,6 +36,16 @@ $_SESSION['experience'] = $experience;
 $line = $username . "," . $date_birth . "," . $direction . "," . $type_help . "," . $experience . "\n";
 file_put_contents("data.txt", $line, FILE_APPEND);
 
+require_once 'ApiClient.php';
+$api = new ApiClient();
+
+$url = 'https://www.volunteerconnector.org/api/search';
+$apiData = $api->request($url);
+
+$_SESSION['api_data'] = $apiData;
+
+
+
 header("Location: index.php");
 exit();
 ?>
