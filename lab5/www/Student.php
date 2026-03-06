@@ -6,11 +6,11 @@ class Student {
         $this->pdo = $pdo;
     }
 
-    public function add($username, $date_birth, $direction, $experience, $type_help ) {
+    public function add($username, $age, $direction, $experience, $type_help ) {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO students (username, date_birth, direction, experience, type_help) VALUES (?, ?, ?, ?, ?)"
+            "INSERT INTO students (username, age, direction, experience, type_help) VALUES (?, ?, ?, ?, ?)"
         );
-        $stmt->execute([$username, $date_birth, $direction, $experience, $type_help]);
+        $stmt->execute([$username, $age, $direction, $experience, $type_help]);
     }
 
     public function getAll() {
