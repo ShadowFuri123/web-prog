@@ -6,11 +6,11 @@ class Student {
         $this->pdo = $pdo;
     }
 
-    public function add($name, $date_birth, $direction, $experience, $Kind_help ) {
+    public function add($username, $date_birth, $direction, $experience, $type_help ) {
         $stmt = $this->pdo->prepare(
-            "INSERT INTO students (name, date_birth, direction, experience, Kind_help) VALUES (?, ?, ?, ?, ?)"
+            "INSERT INTO students (username, date_birth, direction, experience, type_help) VALUES (?, ?, ?, ?, ?)"
         );
-        $stmt->execute([$name, $date_birth, $direction, $experience, $Kind_help]);
+        $stmt->execute([$username, $date_birth, $direction, $experience, $type_help]);
     }
 
     public function getAll() {
@@ -18,9 +18,9 @@ class Student {
         return $stmt->fetchAll();
     }
 
-    public function update($id, $name) {
-        $stmt = $this->pdo->prepare("UPDATE students SET name=? WHERE id=?");
-        $stmt->execute([$name, $id]);
+    public function update($id, $username) {
+        $stmt = $this->pdo->prepare("UPDATE students SET username=? WHERE id=?");
+        $stmt->execute([$username, $id]);
     }
 
     public function delete($id) {
