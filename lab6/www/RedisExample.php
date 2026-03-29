@@ -1,31 +1,27 @@
 <?php
+
 namespace App;
 
-use Predis\Client;
+use App\Helpers\ClientFactory;
 
 class RedisExample
 {
-    private Client $client;
+    private $client;
 
     public function __construct()
     {
-        // Подключение к сервису redis внутри Docker сети
-        $this->client = new Client('tcp://redis:6379');
+        $this->client = ClientFactory::make('http://localhost:7379/'); // redis-commander proxy
     }
 
-    public function setValue(string $key, string $value): void
+    public function setValue($key, $value)
     {
-        $this->client->set($key, $value);
+        $response = $this->client->get("SET/$key/$value");
+        return $response->getBody()->getContents();
     }
 
-    public function getValue(string $key): ?string
+    public function getValue($key)
     {
-        return $this->client->get($key);
-    }
-
-    // НОВЫЙ МЕТОД: Возвращает объект клиента для выполнения сложных команд
-    public function getClient(): Client
-    {
-        return $this->client;
+        $response = $this->client->get("GET/$key");
+        return $response->getBody()->getContents();
     }
 }
