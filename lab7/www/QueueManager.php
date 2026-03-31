@@ -1,4 +1,6 @@
 <?php
+namespace App;
+
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -18,13 +20,18 @@ class QueueManager {
     }
 
     public function consume(callable $callback) {
-        $this->channel->basic_consume($this->queueName, '', false, true, false, false, function($msg) use ($callback) {
-            $data = json_decode($msg->body, true);
-            $callback($data);
+        $this->channel->basic_qos(null, 1, null);
+        $this->channel->basic_consume($this->queueName, '', false, false, false, false, function($msg) use ($callback) {
+            $callback($msg);
         });
-
         while($this->channel->is_consuming()) {
             $this->channel->wait();
+        }
+    }
+
+    public function __destruct() {
+        if ($this->channel) {
+            $this->channel->close();
         }
     }
 }
