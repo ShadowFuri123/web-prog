@@ -1,2 +1,5 @@
 /lab6/www/vendor/
 /lab7/www/vendor/
+/lab8/vendor/
+/lab8/.env.local
+/lab8/.env.test

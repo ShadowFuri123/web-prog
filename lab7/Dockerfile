@@ -1,34 +1,23 @@
 FROM php:8.2-fpm
 
-# Установка системных зависимостей
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    curl \
-    librdkafka-dev \
-    libz-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Установка зависимостей
+RUN apt-get update && apt-get install -y git unzip curl && rm -rf /var/lib/apt/lists/*
 
-# Установка расширений PHP
-# sockets и pcntl нужны для php-amqplib
-# rdkafka нужен для nmred/kafka-php
-RUN docker-php-ext-install sockets pcntl \
-    && pecl install rdkafka \
-    && docker-php-ext-enable rdkafka
+# Установка расширений
+RUN docker-php-ext-install sockets pcntl
 
 # Установка Composer
-RUN curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www/html
 
-# Копируем только composer.json сначала для кэширования слоя
-COPY composer.json .
+# 1. Копируем composer.json ИЗ ПАПКИ www
+COPY www/composer.json .
 
-# Устанавливаем зависимости (флаги для избежания интерактивных запросов)
+# 2. Устанавливаем зависимости ПРЯМО В ОБРАЗ
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Копируем исходный код приложения
-COPY ./www /var/www/html
+# 3. Копируем весь остальной код
+COPY www/ .
 
 CMD ["php-fpm"]
