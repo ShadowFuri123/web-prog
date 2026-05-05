@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  php:
+    build: .
+    container_name: lab9_php
+    volumes:
+      - ./www:/var/www/html
+      - ./tests/:/var/www/html/tests
+    ports:
+      - "8080:80"
