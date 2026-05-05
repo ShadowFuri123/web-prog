@@ -1,11 +1,17 @@
-FROM php:8.3-cli
+FROM php:8.2-fpm
+
+
+RUN sed -i 's/deb.debian.org/mirror.yandex.ru/g' /etc/apt/sources.list.d/debian.sources || \
+    sed -i 's/deb.debian.org/mirror.yandex.ru/g' /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends git unzip && \
+    docker-php-ext-install sockets && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /var/www/html
 
-RUN apt-get update && apt-get install -y git zip unzip && rm -rf /var/lib/apt/lists/*
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-COPY composer.json .
-RUN composer install
+COPY composer.phar /usr/local/bin/composer
+RUN chmod +x /usr/local/bin/composer
 
-EXPOSE 80
-CMD ["php", "-S", "0.0.0.0:80"]
+CMD ["php-fpm"]
